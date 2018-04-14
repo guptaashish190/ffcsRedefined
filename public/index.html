@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>FFCS Redefined</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Titillium+Web:900" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <div class="row head">
+      <div class="col-lg-12 headtext "><span id="ffcsText">FFCS</span><span id="redefText">Redefined</span></div>
+    </div>
+
+    <div class="container-fluid body">
+
+      <div class="col-12 searchByText">Search By:</div>
+
+      <label class="row">
+            <input type="radio" class="radioButton" name="searchType" value="Course Code" checked>
+            <span class="customButton"></span>
+            <span class="text-label">Course code</span>
+          </label>
+      <label class="row">
+          <input type="radio" class="radioButton" value="Faculty" name="searchType">
+          <span class="customButton"></span>
+          <span class="text-label">Faculty</span>
+      </label>
+
+      <div class="row">
+        <input spellcheck="false" placeholder="Course Code" id="input" autocomplete="off" class="col-4">
+        <button type="button" id="ajaxCall" class="col-1">Click Kar</button>
+      </div>
+
+    </div>
+
+    <!--Embedded course select popup-->
+    <div class="embeddedPopupContainer" id="id0">
+      <span class="embeddedPopupText"></span>
+      <button type="button" name="button">Cancel</button>>
+      <div class="embeddedPopup">
+
+      </div>
+    </div>
+    <div class="embeddedPopupContainer id2" id="id1">
+      <span class="embeddedPopupText"></span>
+      <button type="button" name="button">Cancel</button>
+      <div class="embeddedPopup">
+
+      </div>
+    </div>
+    <div class="doneContainer">
+      <img src="images/checkmark.png" alt="">
+    </div>
+    <div class="removeContainer">
+      <img src="images/remove.png" alt="">
+    </div>
+    <a class="jumpCourses" href="#addedList">
+      Scroll Down
+    </a>
+    <ul class="row cont">
+    </ul>
+    <div class="clashingText col-12">
+      The selected slots are clashing. Please select valid slots.
+      <button type="button" name="button">OK</button>
+    </div>
+    <table class="col-lg-12 timeTable">
+      <!-- timeTable head 1/4 -->
+      <tr class="tableLabel">
+        <td rowspan="2">Theory</td>
+        <td>Start</td>
+        <td>8:00</td>
+        <td>9:00</td>
+        <td>10:00</td>
+        <td>11:00</td>
+        <td>12:00</td>
+        <td>--</td>
+        <td>Lunch</td>
+        <td>14:00</td>
+        <td>15:00</td>
+        <td>16:00</td>
+        <td>17:00</td>
+        <td>18:00</td>
+        <td>18:50</td>
+        <td>19:00</td>
+      </tr>
+      <!-- timeTable head 2/4 -->
+      <tr class="tableLabel">
+        <td>End</td>
+        <td>8:00</td>
+        <td>9:00</td>
+        <td>10:00</td>
+        <td>11:00</td>
+        <td>12:00</td>
+        <td>--</td>
+        <td>Lunch</td>
+        <td>14:00</td>
+        <td>15:00</td>
+        <td>16:00</td>
+        <td>17:00</td>
+        <td>18:00</td>
+        <td>18:50</td>
+        <td>19:00</td>
+      </tr>
+      <!--Time Table head 3/4-->
+      <tr class="tableLabel">
+        <td rowspan="2">Lab</td>
+        <td>Start</td>
+        <td>8:00</td>
+        <td>8:46</td>
+        <td>10:00</td>
+        <td>10:46</td>
+        <td>11:31</td>
+        <td>12:16</td>
+        <td>Lunch</td>
+        <td>14:00</td>
+        <td>14:46</td>
+        <td>16:00</td>
+        <td>16:46</td>
+        <td>17:31</td>
+        <td>18:16</td>
+        <td>--</td>
+      </tr>
+      <!--Time Table head 4/4-->
+      <tr class="darkenBottomBorder tableLabel">
+        <td>Start</td>
+        <td>8:45</td>
+        <td>9:30</td>
+        <td>10:45</td>
+        <td>11:30</td>
+        <td>12:15</td>
+        <td>13:00</td>
+        <td>Lunch</td>
+        <td>14:45</td>
+        <td>15:30</td>
+        <td>16:45</td>
+        <td>17:30</td>
+        <td>18:15</td>
+        <td>19:00</td>
+        <td>--</td>
+      </tr>
+
+      <!--Slots row 1-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">MON</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">A1</td>
+        <td rowspan="1" class="slotNames">F1</td>
+        <td rowspan="1" class="slotNames">D1</td>
+        <td rowspan="1" class="slotNames">TB1</td>
+        <td rowspan="1" class="slotNames">TG1</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">A2</td>
+        <td rowspan="1" class="slotNames">F2</td>
+        <td rowspan="1" class="slotNames">D2</td>
+        <td rowspan="1" class="slotNames">TB2</td>
+        <td rowspan="1" class="slotNames">TG2</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V3</td>
+      </tr>
+      <!--Slots row 2-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L1</td>
+        <td rowspan="1" class="slotNames">L2</td>
+        <td rowspan="1" class="slotNames">L3</td>
+        <td rowspan="1" class="slotNames">L4</td>
+        <td rowspan="1" class="slotNames">L5</td>
+        <td rowspan="1" class="slotNames">L6</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">L31</td>
+        <td rowspan="1" class="slotNames">L32</td>
+        <td rowspan="1" class="slotNames">L33</td>
+        <td rowspan="1" class="slotNames">L34</td>
+        <td rowspan="1" class="slotNames">L35</td>
+        <td rowspan="1" class="slotNames">L36</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+      <!--Slots row 3-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">TUE</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">B1</td>
+        <td rowspan="1" class="slotNames">G1</td>
+        <td rowspan="1" class="slotNames">E1</td>
+        <td rowspan="1" class="slotNames">TC1</td>
+        <td rowspan="1" class="slotNames">TA1</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">B2</td>
+        <td rowspan="1" class="slotNames">G2</td>
+        <td rowspan="1" class="slotNames">E2</td>
+        <td rowspan="1" class="slotNames">TC2</td>
+        <td rowspan="1" class="slotNames">TAA2</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V4</td>
+      </tr>
+      <!--Slots row 4-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L7</td>
+        <td rowspan="1" class="slotNames">L8</td>
+        <td rowspan="1" class="slotNames">L9</td>
+        <td rowspan="1" class="slotNames">L10</td>
+        <td rowspan="1" class="slotNames">L11</td>
+        <td rowspan="1" class="slotNames">L12</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">L37</td>
+        <td rowspan="1" class="slotNames">L38</td>
+        <td rowspan="1" class="slotNames">L39</td>
+        <td rowspan="1" class="slotNames">L40</td>
+        <td rowspan="1" class="slotNames">L41</td>
+        <td rowspan="1" class="slotNames">L42</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+      <!--Slots row 5-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">WED</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">C1</td>
+        <td rowspan="1" class="slotNames">A1</td>
+        <td rowspan="1" class="slotNames">F1</td>
+        <td rowspan="1" class="slotNames">V1</td>
+        <td rowspan="1" class="slotNames">V2</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">C2</td>
+        <td rowspan="1" class="slotNames">A2</td>
+        <td rowspan="1" class="slotNames">F2</td>
+        <td rowspan="1" class="slotNames">TD2</td>
+        <td rowspan="1" class="slotNames">TBB2</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V5</td>
+      </tr>
+      <!--Slots row 6-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L13</td>
+        <td rowspan="1" class="slotNames">L14</td>
+        <td rowspan="1" class="slotNames">L15</td>
+        <td rowspan="1" class="slotNames">L16</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">L43</td>
+        <td rowspan="1" class="slotNames">L44</td>
+        <td rowspan="1" class="slotNames">L45</td>
+        <td rowspan="1" class="slotNames">L46</td>
+        <td rowspan="1" class="slotNames">L47</td>
+        <td rowspan="1" class="slotNames">L48</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+      <!--Slots row 7-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">THU</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">D1</td>
+        <td rowspan="1" class="slotNames">B1</td>
+        <td rowspan="1" class="slotNames">G1</td>
+        <td rowspan="1" class="slotNames">TE1</td>
+        <td rowspan="1" class="slotNames">TCC1</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">D2</td>
+        <td rowspan="1" class="slotNames">B2</td>
+        <td rowspan="1" class="slotNames">G2</td>
+        <td rowspan="1" class="slotNames">TE2</td>
+        <td rowspan="1" class="slotNames">TCC2</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V6</td>
+      </tr>
+      <!--Slots row 8-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L19</td>
+        <td rowspan="1" class="slotNames">L20</td>
+        <td rowspan="1" class="slotNames">L21</td>
+        <td rowspan="1" class="slotNames">L22</td>
+        <td rowspan="1" class="slotNames">L23</td>
+        <td rowspan="1" class="slotNames">L24</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">L49</td>
+        <td rowspan="1" class="slotNames">L50</td>
+        <td rowspan="1" class="slotNames">L51</td>
+        <td rowspan="1" class="slotNames">L52</td>
+        <td rowspan="1" class="slotNames">L53</td>
+        <td rowspan="1" class="slotNames">L54</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+      <!--Slots row 9-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">FRI</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">E1</td>
+        <td rowspan="1" class="slotNames">C1</td>
+        <td rowspan="1" class="slotNames">TA1</td>
+        <td rowspan="1" class="slotNames">TF1</td>
+        <td rowspan="1" class="slotNames">TD1</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">E2</td>
+        <td rowspan="1" class="slotNames">C2</td>
+        <td rowspan="1" class="slotNames">TA2</td>
+        <td rowspan="1" class="slotNames">TF2</td>
+        <td rowspan="1" class="slotNames">TDD2</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V7</td>
+      </tr>
+      <!--Slots row 10-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L25</td>
+        <td rowspan="1" class="slotNames">L26</td>
+        <td rowspan="1" class="slotNames">L27</td>
+        <td rowspan="1" class="slotNames">L28</td>
+        <td rowspan="1" class="slotNames">L29</td>
+        <td rowspan="1" class="slotNames">L30</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">L55</td>
+        <td rowspan="1" class="slotNames">L56</td>
+        <td rowspan="1" class="slotNames">L57</td>
+        <td rowspan="1" class="slotNames">L58</td>
+        <td rowspan="1" class="slotNames">L59</td>
+        <td rowspan="1" class="slotNames">L60</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+      <!--Slots row 11-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">SAT</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">V8</td>
+        <td rowspan="1" class="slotNames">X11</td>
+        <td rowspan="1" class="slotNames">X12</td>
+        <td rowspan="1" class="slotNames">Y11</td>
+        <td rowspan="1" class="slotNames">Y12</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">X21</td>
+        <td rowspan="1" class="slotNames">Z21</td>
+        <td rowspan="1" class="slotNames">Y21</td>
+        <td rowspan="1" class="slotNames">W21</td>
+        <td rowspan="1" class="slotNames">W22</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V9</td>
+      </tr>
+      <!--Slots row 12-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L71</td>
+        <td rowspan="1" class="slotNames">L72</td>
+        <td rowspan="1" class="slotNames">L73</td>
+        <td rowspan="1" class="slotNames">L74</td>
+        <td rowspan="1" class="slotNames">L75</td>
+        <td rowspan="1" class="slotNames">L76</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">L77</td>
+        <td rowspan="1" class="slotNames">L78</td>
+        <td rowspan="1" class="slotNames">L79</td>
+        <td rowspan="1" class="slotNames">L80</td>
+        <td rowspan="1" class="slotNames">L81</td>
+        <td rowspan="1" class="slotNames">L82</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+      <!--Slots row 13-->
+      <tr>
+        <td rowspan="2" class="darkenRightBorder tableLabel2">SUN</td>
+        <td rowspan="1">Theory</td>
+        <td rowspan="1" class="slotNames">V10</td>
+        <td rowspan="1" class="slotNames">Y11</td>
+        <td rowspan="1" class="slotNames">Y12</td>
+        <td rowspan="1" class="slotNames">X11</td>
+        <td rowspan="1" class="slotNames">X12</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">Y21</td>
+        <td rowspan="1" class="slotNames">Z21</td>
+        <td rowspan="1" class="slotNames">X21</td>
+        <td rowspan="1" class="slotNames">W21</td>
+        <td rowspan="1" class="slotNames">W22</td>
+        <td rowspan="1" class="slotNames">--</td>
+        <td rowspan="1" class="slotNames">V11</td>
+      </tr>
+      <!--Slots row 14-->
+      <tr class="darkenWeekLine">
+        <td rowspan="1">Lab</td>
+        <td rowspan="1" class="slotNames">L83</td>
+        <td rowspan="1" class="slotNames">L84</td>
+        <td rowspan="1" class="slotNames">L84</td>
+        <td rowspan="1" class="slotNames">L86</td>
+        <td rowspan="1" class="slotNames">L87</td>
+        <td rowspan="1" class="slotNames">L88</td>
+        <td rowspan="1">Lunch</td>
+        <td rowspan="1" class="slotNames">89</td>
+        <td rowspan="1" class="slotNames">L90</td>
+        <td rowspan="1" class="slotNames">L91</td>
+        <td rowspan="1" class="slotNames">L92</td>
+        <td rowspan="1" class="slotNames">L93</td>
+        <td rowspan="1" class="slotNames">L94</td>
+        <td rowspan="" class="slotNames">--</td>
+      </tr>
+    </table>
+    <table class="addedList" id="addedList">
+      <tr>
+      <th>TITLE</th>
+      <th>FACULTY</th>
+      <th>VENUE</th>
+      <th>SLOT</th>
+      <th>CREDITS</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>Please add a course</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </table>
+  </div>
+  <div class="totalCredits col-3">
+    Total credits registered: <span class="totalCreditsRegNum">0</span>
+  </div>
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+  <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="scripts/timeTable.js"></script>
+  <script type="text/javascript" src="scripts/clashHandler.js"></script>
+  <script type="text/javascript" src="scripts/javascript.js"></script>
+
+  </script>
+  </div>
+  <footer class="footer">
+        © 2018 Copyright: FFCS Redefined
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,357 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+}
+
+footer {
+  background: lightgrey;
+  padding: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  border-top: 3px solid grey;
+  border-bottom: 3px solid grey;
+  margin-top: 40px;
+}
+
+button {
+  padding: 10px;
+  background: lightblue;
+  border: 3px solid rgba(119, 203, 255, 1);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: translate 0.2s ease-out 0s;
+  transition-property: translate, box-shadow;
+}
+
+button:hover {
+  box-shadow: 0px 0px 5px rgba(28, 141, 255, 0.5) inset;
+  translate: scale(1.1, 1.1);
+}
+
+.cont li, .embeddedPopup li {
+  word-wrap: break-word;
+  font-size: 14px;
+  background: rgba(201, 255, 221, 0.7);
+  border: 4px solid rgba(201, 255, 221, 1);
+  padding: 7px;
+  margin: 5px;
+  margin-right: 7px;
+  list-style: none;
+  transition: transform 0.2s ease 0s;
+  cursor: pointer;
+}
+
+.cont li:hover {
+  transform: scale(1.1, 1.1);
+  background: rgba(201, 255, 221, 1);
+  border: 4px solid rgba(66, 223, 255, 0.7);
+}
+
+.addedList {
+  width: 100%;
+}
+
+.addedList tr td {
+  background: rgba(255, 147, 147, 0.1);
+  border: 2px solid rgba(255, 147, 147, 0.3);
+  padding: 5px;
+  text-align: center;
+}
+
+.addedList tr th {
+  background: rgba(255, 147, 147, 0.5);
+  border: 2px solid rgba(255, 147, 147, 0.8);
+  padding: 5px;
+  text-align: center;
+  margin: 0;
+}
+
+.removeButton {
+  background: rgba(255, 147, 147, 0.5);
+  border: 2px solid rgba(255, 147, 147, 0.5);
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  border: 2px solid rgba(255, 147, 147, 0.8);
+}
+
+.head {
+  background: rgba(221, 221, 221, 1);
+  box-shadow: 0px 0px 20px grey inset;
+  height: 170px;
+}
+
+.body {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.headtext {
+  color: grey;
+  top: 20px;
+  text-align: center;
+}
+
+#ffcsText {
+  font-size: 60px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+#redefText {
+  font-size: 60px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.jumpCourses {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  opacity: 0.5;
+  text-decoration: none;
+  padding: 10px;
+  background: #8ce0ff;
+  color: black;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-out 0s;
+  color: black;
+}
+
+.jumpCourses:hover {
+  color: black;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.typeText {
+  padding: 10px;
+}
+
+#input {
+  padding: 10px;
+}
+
+.text-label {
+  padding-left: 10px;
+}
+
+label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+label .customButton {
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border 0.2s ease-out 0s;
+  transition-property: border, background-color;
+}
+
+label .customButton:hover {
+  background-color: #ccc;
+}
+
+label input:checked~.customButton {
+  border: 6px solid #006bc1;
+  background-color: #2196F3;
+}
+
+.customButton:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+label input:checked~.customButton:after {
+  display: block;
+}
+
+/*     Time Table Css   */
+
+.timeTable {
+  background: rgba(124, 124, 255, 0.5);
+  margin: 10px;
+}
+
+.timeTable tr td {
+  font-size: 15px;
+  text-align: center;
+  padding: 6px;
+  border-left: 1px solid rgba(97, 97, 204, 0.2);
+  max-width: 50%;
+}
+
+.timeTable .addingDone div:nth-child(2) {
+  font-size: 12px;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.timeTable tr {
+  border-bottom: 1px solid rgba(97, 97, 204, 0.2);
+}
+
+.timeTable .darkenBottomBorder {
+  border-bottom: 3px solid rgba(97, 97, 204, 1);
+}
+
+.timeTable .darkenRightBorder {
+  border-right: 3px solid rgba(97, 97, 204, 1);
+}
+
+.timeTable .tableLabel {
+  background: rgba(124, 124, 255, 0.9);
+  font-weight: bold;
+}
+
+.timeTable .tableLabel2 {
+  background: rgba(122, 180, 255, 0.9);
+  font-weight: bold;
+}
+
+.timeTable .darkenWeekLine {
+  border-bottom: 1px solid rgba(97, 97, 204, 0.8);
+}
+
+.timeTable .addingDone {
+  background: rgba(153, 69, 183, 0.4);
+  font-weight: bold;
+  border: 3px solid rgba(153, 69, 183, 0.7)
+}
+
+/*Embedded Course popup*/
+
+.embeddedPopupContainer {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.embeddedPopup {
+  position: relative;
+  top: 30%;
+  left: 20%;
+}
+
+.embeddedPopup li {
+  display: inline-block;
+  background: skyblue;
+  border: 3px solid rgba(0, 109, 168, 0.5);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
+  transition-property: background-color;
+}
+
+.embeddedPopup li:hover {
+  background: rgba(0, 119, 178, 1);
+}
+
+.embeddedPopupContainer button {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  border: grey;
+  background: rgba(0, 0, 0, 0.5);
+  color: lightgrey;
+}
+
+.embeddedPopupText {
+  padding: 10px;
+  position: absolute;
+  left: 40%;
+  top: 30px;
+  background: grey;
+  border-radius: 4px;
+}
+
+.searchByText {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.ui-menu-item {
+  color: grey;
+}
+
+.ui-menu {
+  max-height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.doneContainer, .removeContainer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 7;
+  padding: 100px;
+  transition: transform 1s;
+}
+
+.doneContainer img, .removeContainer img {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.totalCredits {
+  font-weight: bold;
+  background: rgba(255, 201, 122, 0.7);
+  border: 1px solid rgba(255, 201, 122, 1);
+  margin: 20px;
+  padding: 15px;
+}
+
+.clashingText {
+  display: none;
+  font-size: 20px;
+  font-family: verdana,sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(255, 50, 0, 0.4);
+}
+.clashingText button{
+  background: rgba(255, 50, 0, 0.7);
+  border: 3px solid rgba(255,50,0,1);
+}
+
+.clashBlink {
+  border: 3px solid rgba(255, 50, 0, 1) !important;
+  animation-name: blink !important;
+  animation-duration: 2s !important;
+  animation-timing-function: ease !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: infinite !important;
+}
+
+@keyframes blink {
+  0% {
+    background-color: rgba(255, 50, 0, 0.3);
+  }
+  50% {
+    background-color: rgba(255, 50, 0, 0.7);
+  }
+  100% {
+    background-color: rgba(255, 50, 0, 0.3);
+  }
+}
