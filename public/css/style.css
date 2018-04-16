@@ -343,7 +343,14 @@ label input:checked~.customButton:after {
   animation-delay: 0s !important;
   animation-iteration-count: infinite !important;
 }
-
+.clashBlinkPreview{
+    border: 3px solid rgba(255, 185, 124, 1) !important;
+    animation-name: blinkPreview !important;
+    animation-duration: 2s !important;
+    animation-timing-function: ease !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: infinite !important;
+  }
 @keyframes blink {
   0% {
     background-color: rgba(255, 50, 0, 0.3);
@@ -353,5 +360,15 @@ label input:checked~.customButton:after {
   }
   100% {
     background-color: rgba(255, 50, 0, 0.3);
+  }
+}@keyframes blinkPreview {
+  0% {
+    background-color: rgba(255, 232, 153, 0.7);
+  }
+  50% {
+    background-color: rgba(255, 232, 153, 0.3);
+  }
+  100% {
+    background-color: rgba(255, 232, 153, 0.7);
   }
 }

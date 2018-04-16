@@ -152,7 +152,6 @@ $(document).ready(function() {
           }
         }
         if (numberOfTypes == 2) {
-        console.log("click2");
           var x1;
           var x2;
           $(document).on("click", "#id0 .embeddedPopup li", function() {
@@ -185,7 +184,6 @@ $(document).ready(function() {
           });
         } else {
           $(document).on("click", "#id0 .embeddedPopup li", function() {
-            console.log("triggered");
             $(".embeddedPopupContainer").css("display", "none");
 
             //slots array
@@ -195,9 +193,7 @@ $(document).ready(function() {
             slots = slots.concat(s2.split("+"));
 
             var tempAddArray = [thisE, this];
-            console.log(thisE);
             if (checkClash(slots)) {
-
               addedCourses.push(this);
               addedCourses.push(thisE);
 
