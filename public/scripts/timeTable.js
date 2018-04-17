@@ -59,9 +59,18 @@ function removeFromTimetable(arr) {
       var check = timeTableArray[j];
 
       if (arr[i] == slotArray[j] && $(check).hasClass("addingDone")) {
-       $(timeTableArray[j]).html($(timeTableArray[j]).attr("id"));
-       $(timeTableArray[j]).removeClass("addingDone");
-     }0
+       $(check).html($(timeTableArray[j]).attr("id"));
+       $(check).removeClass("addingDone");
+     }
     }
+  }
+}
+function clearTimetable(){
+
+  var timeTableArray = $(".timeTable .slotNames").toArray();
+  for (var j = 0; j < timeTableArray.length; j++) {
+    var check = timeTableArray[j];
+     $(check).html($(timeTableArray[j]).attr("id"));
+     $(check).removeClass("addingDone");
   }
 }

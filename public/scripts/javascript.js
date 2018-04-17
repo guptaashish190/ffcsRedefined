@@ -94,7 +94,13 @@ $(document).ready(function() {
     displayImg($(".removeContainer"));
   });
 
-  //Search Type state changed function
+  //Clear Timetable
+  $(".clearbutton").click(()=>{
+      clearTimetable();
+      addedCourses = [];
+      updateListBeta(addedCourses);
+  });
+    //Search Type state changed function
   $("input[name=searchType]").change(function() {
     $("#input").attr("placeholder", $("input[name=searchType]:checked").val());
   });

@@ -17,26 +17,33 @@
       <div class="col-lg-12 headtext "><span id="ffcsText">FFCS</span><span id="redefText">Redefined</span></div>
     </div>
 
-    <div class="container-fluid body">
+    <div class="body row">
+      <div class="col-6">
 
-      <div class="col-12 searchByText">Search By:</div>
+        <div class="searchByText">Search By:</div>
 
-      <label class="row">
-            <input type="radio" class="radioButton" name="searchType" value="Course Code" checked>
+        <label><br>
+            <input type="radio" class="radioButton" name="searchType"value="Course Code" checked>
             <span class="customButton"></span>
             <span class="text-label">Course code</span>
-          </label>
-      <label class="row">
+          </label><br>
+        <label>
           <input type="radio" class="radioButton" value="Faculty" name="searchType">
           <span class="customButton"></span>
           <span class="text-label">Faculty</span>
       </label>
 
-      <div class="row">
-        <input spellcheck="false" placeholder="Course Code" id="input" autocomplete="off" class="col-4">
-        <button type="button" id="ajaxCall" class="col-1">Click Kar</button>
+        <div><br>
+          <input spellcheck="false" placeholder="Course Code" id="input" autocomplete="off" class="col-6">
+          <button type="button" id="ajaxCall" class="col-4">Click Kar</button>
+        </div>
       </div>
 
+      <div class="loadtableContainer col-4 offset-2">
+        <label>Load Timetable</label>
+        <input type="file" id="loadTimetable" accept = ".timetable">
+        <input type="submit" id = "loadTimetableButton" onclick="loadTimetable()">
+      </div>
     </div>
 
     <!--Embedded course select popup-->
@@ -407,37 +414,44 @@
     </table>
     <table class="addedList" id="addedList">
       <tr>
-      <th>TITLE</th>
-      <th>FACULTY</th>
-      <th>VENUE</th>
-      <th>SLOT</th>
-      <th>CREDITS</th>
-      <th></th>
-    </tr>
-    <tr>
-      <td>Please add a course</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+        <th>TITLE</th>
+        <th>FACULTY</th>
+        <th>VENUE</th>
+        <th>SLOT</th>
+        <th>CREDITS</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>Please add a course</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
   </div>
-  <div class="totalCredits col-3">
-    Total credits registered: <span class="totalCreditsRegNum">0</span>
+  <div class="row">
+    <div class="totalCredits col-3">
+      Total credits registered: <span class="totalCreditsRegNum">0</span>
+    </div>
+    <div class="col-3 offset-5">
+        <button type="button" class="clearbutton" onclick="clearTimetable()" name="button">Clear Timetable</button>
+    </div>
   </div>
+
   <script type="text/javascript" src="scripts/jquery.js"></script>
   <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
   <script type="text/javascript" src="scripts/timeTable.js"></script>
   <script type="text/javascript" src="scripts/clashHandler.js"></script>
+  <script type="text/javascript" src="scripts/loadTable.js"></script>
   <script type="text/javascript" src="scripts/javascript.js"></script>
 
   </script>
   </div>
   <footer class="footer">
-        © 2018 Copyright: FFCS Redefined
-    </footer>
+    © 2018 Copyright: FFCS Redefined
+  </footer>
 </body>
 
 </html>
