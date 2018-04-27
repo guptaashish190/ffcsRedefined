@@ -22,7 +22,12 @@ function loadTimetable(){
 
    function receivedText(e) {
      lines = e.target.result;
-     //var newArr = JSON.parse(lines);
-     console.log(JSON.parse(lines));
+     var newArr =jQuery.parseJSON(lines);
+     newArr.forEach(function(arrElement){
+       addedCourses.push(arrElement);
+     });
+     addToTimetable(newArr);
+     updateListBeta(addedCourses);
    }
+
  }

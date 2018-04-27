@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
   var searchRes = [];
 
   //Ajax call to fetch filtered courses
@@ -49,23 +49,22 @@ $(document).ready(function() {
       url: '/addElement',
       datatype: 'text',
       success: function(data) {
-        if (checkElementExist(thisE, addedCourses)) {
+        if (checkElementExist(contContents(thisE), addedCourses)) {
           alert("Course Already Added");
         } else {
           if (data.TYPE.indexOf("E") != -1) {
             //if selected Element is embedded
-            ajaxCallFindotherEmbedded(data.CODE, data.FACULTY, data.TYPE, data, thisE);
+            ajaxCallFindotherEmbedded(data.CODE, data.FACULTY, data.TYPE, data, contContents(thisE));
             $("#id0").css("display", "block");
 
           } else {
 
-            var s1 = $.trim($($($.parseHTML($(thisE).html()))[8]).html());
+            var s1 = contContents(thisE).slots;
             var slots = s1.split("+");
 
             if (checkClash(slots)) {
-
-              addedCourses.push(thisE);
-              var x = [thisE];
+              addedCourses.push(contContents(thisE));
+              var x = [contContents(thisE)];
               addToTimetable(x);
               updateListBeta(addedCourses);
               displayImg($(".doneContainer"));
@@ -88,7 +87,8 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".removeButton", function() {
-    removeFromTimetable(this);
+    console.log(this);
+    removeFromTimetable($(this).attr("value"));
     addedCourses.splice($(this).attr("value"), 1);
     updateListBeta(addedCourses);
     displayImg($(".removeContainer"));
@@ -169,7 +169,7 @@ $(document).ready(function() {
           $(document).on("click", "#id1 .embeddedPopup li", function() {
             $(".embeddedPopupContainer").css("display", "none");
             x2 = this;
-            var s1 = $.trim($($($.parseHTML($(thisE).html()))[8]).html());
+            var s1 = thisE.slots;
             var s2 = $.trim($($($.parseHTML($(x1).html()))[8]).html());
             var s3 = $.trim($($($.parseHTML($(x2).html()))[8]).html());
 
@@ -179,10 +179,10 @@ $(document).ready(function() {
 
             if (checkClash(slots)) {
 
-              addedCourses.push(x1);
-              addedCourses.push(x2);
+              addedCourses.push(contContents(x1));
+              addedCourses.push(contContents(x2));
               addedCourses.push(thisE);
-              var tempAddArray = [thisE, x1, x2];
+              var tempAddArray = [thisE, contContents(x1), contContents(x2)];
               addToTimetable(tempAddArray);
               updateListBeta(addedCourses);
               displayImg($(".doneContainer"));
@@ -193,14 +193,14 @@ $(document).ready(function() {
             $(".embeddedPopupContainer").css("display", "none");
 
             //slots array
-            var s1 = $.trim($($($.parseHTML($(thisE).html()))[8]).html());
+            var s1 = thisE.slots;
             var s2 = $.trim($($($.parseHTML($(this).html()))[8]).html());
             var slots = s1.split("+");
             slots = slots.concat(s2.split("+"));
 
-            var tempAddArray = [thisE, this];
+            var tempAddArray = [thisE, contContents(this)];
             if (checkClash(slots)) {
-              addedCourses.push(this);
+              addedCourses.push(contContents(this));
               addedCourses.push(thisE);
 
               addToTimetable(tempAddArray);
@@ -251,13 +251,13 @@ $(document).ready(function() {
     `);
       var totalCredits = 0;
       for (i = 0; i < addedCourses.length; i++) {
-        var title = $($(addedCourses[i]).html())[1].textContent;
-        var faculty = $($(addedCourses[i]).html())[4].textContent;
-        var slot = $($(addedCourses[i]).html())[7].nextSibling.innerHTML;
-        var venue = $($(addedCourses[i]).html())[13].textContent;
-        var type = $($(addedCourses[i]).html())[15].textContent;
-        var code = $(addedCourses[i])[0].id;
-        var credits = $($($(addedCourses[i]).html())[10]).html().split("CREDITS: ")[1];
+        var title = addedCourses[i].title;
+        var faculty = addedCourses[i].faculty;
+        var slot = addedCourses[i].slots;
+        var venue = addedCourses[i].venue;
+        var type = addedCourses[i].type;
+        var code = addedCourses[i].courseCode;
+        var credits = addedCourses[i].credits;
         totalCredits += parseInt(credits);
         appendStringAddElement = "<tr><td id = " + code + ">" + title + "</td><td>" + faculty + "</td><td>" + venue + "</td><td>" + slot + "</td><td>" + credits + "</td><td><button class='removeButton' value=" + i + ">Remove</button></td></tr>";
         tableElement.append(appendStringAddElement);
@@ -267,15 +267,15 @@ $(document).ready(function() {
   }
   //Check if object exists in a List
   function checkElementExist(element, arr) {
-
     for (i = 0; i < arr.length; i++) {
-      if ($(element)[0].id == arr[i].id) {
+      if (element.courseCode == arr[i].courseCode) {
         return 1;
       }
     }
     return 0;
 
   }
+
 
   $("#input").keyup(function() {
 
@@ -300,4 +300,39 @@ $(document).ready(function() {
 
   });
 
-});
+//Return clicked container elements
+function contContents(contElement){
+    let elementObj = {};
+    elementObj.title = $($(contElement).html())[1].textContent;
+    elementObj.faculty = $($(contElement).html())[4].textContent;
+    elementObj.slots = $.trim($($(contElement).html())[7].nextSibling.innerHTML);
+    elementObj.venue = $($(contElement).html())[13].textContent;
+    elementObj.type = $($(contElement).html())[15].textContent;
+    elementObj.courseCode = $(contElement)[0].id;
+    elementObj.credits = $($($(contElement).html())[10]).html().split("CREDITS: ")[1];
+    return elementObj;
+}
+
+  //Request timetable file
+  $(".saveTableButton").click(function(){
+
+    // addedCourses.forEach(function(course,index){
+    //   $(".saveTTForm").prepend(`
+    //     <input name = ${index} type='text' value=${JSON.stringify(course)}>
+    //     `);
+    // });
+
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify({courses: addedCourses}),
+      url: '/saveTimeTable',
+      contentType: 'application/json; charset=utf-8',
+      success: function(data) {
+        console.log(data);
+      },
+    });
+  });
+  //Load timetable button
+  $("#loadTimetableButton").click(function(){
+    loadTimetable();
+  });

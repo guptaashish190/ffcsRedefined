@@ -20,40 +20,34 @@ var slotArray = [
 
 //Add Element to the timeTable
 function addToTimetable(thisEA) {
-
   for (k = 0; k < thisEA.length; k++) {
     var thisE = thisEA[k];
-    var selectedText = $($.parseHTML($(thisE).html()));
-    selected = $(selectedText[8]).html();
-
-    selected1 = $.trim(selected);
-    selected = selected1.split("+");
 
     //CLicked element data
-    var courseCode = $(thisE).attr("id");
-    var slots = selected1;
-    var venue = $.trim(selectedText[13].textContent);
+    var courseCode =thisE.courseCode;
+    var slots = thisE.slots.split("+");
+    var venue = thisE.venue;
 
     var timeTableArray = $(".timeTable .slotNames").toArray();
-    for (var i = 0; i < selected.length; i++) {
+    for (var i = 0; i < slots.length; i++) {
 
       for (var j = 0; j < timeTableArray.length; j++) {
         var check = $(timeTableArray[j]);
-        if (selected[i] == check.html() && !check.hasClass("addingDone")) {
+        if (slots[i] == check.html() && !check.hasClass("addingDone")) {
           $(timeTableArray[j]).html("<div>" + courseCode + "</div><div>" + check.html() + "</div><div>" + venue + "</div>");
           $(timeTableArray[j]).addClass("addingDone");
-          $(timeTableArray[j]).attr("id", selected[i]);
+          $(timeTableArray[j]).attr("id", slots[i]);
         }
       }
     }
   }
 }
+
 //Remove element from the timeTable
-function removeFromTimetable(arr) {
-
+function removeFromTimetable(index) {
+  console.log(addedCourses);
   var timeTableArray = $(".timeTable .slotNames").toArray();
-
-  arr = $.trim($($($($(arr)[0].parentNode)[0].parentNode)[0].children[3]).html()).split("+");
+  arr = addedCourses[index].slots.split("+");
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < timeTableArray.length; j++) {
       var check = timeTableArray[j];

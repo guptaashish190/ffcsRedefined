@@ -1,5 +1,6 @@
 var express = require("express");
 var path = require("path");
+var fs = require("fs");
 
 var ffcsData = require(path.join(__dirname, "../models/ffcsMongo.model"));
 
@@ -66,5 +67,15 @@ router.post("/getEmbedded",(req,res)=>{
   ffcsData.find({CODE:code,FACULTY:fac},function(err,extract){
     res.send(extract);
   });
+});
+router.post("/saveTimeTable", (req , res)=>{
+  var courses = req.body.courses;
+  var filename = "YourTimetable.timetable";
+  var filepath = path.join(__dirname, "../Timetables");
+  fs.writeFile(`${filepath}/${filename}`,JSON.stringify(courses),function(err){
+    if(err) throw err;
+   });
+   res.download(path.join(__dirname, "../Timetables/YourTimetable.timetable"),filename);
+  //res.send(courses);
 });
 module.exports = router;

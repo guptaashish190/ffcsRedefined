@@ -13,10 +13,8 @@
           //Check Lab or not
           if (currentSlot.indexOf('L') != -1) {
             checkLab = true;
-            console.log($(timeTableArray[j - 13]));
           } else {
             checkLab = false;
-            console.log($(timeTableArray[j + 13]));
           }
           //Corresponding clash
           if ($(timeTableArray[j]).hasClass("addingDone")) {

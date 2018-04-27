@@ -42,7 +42,7 @@
       <div class="loadtableContainer col-4 offset-2">
         <label>Load Timetable</label>
         <input type="file" id="loadTimetable" accept = ".timetable">
-        <input type="submit" id = "loadTimetableButton" onclick="loadTimetable()">
+        <input type="submit" id = "loadTimetableButton">
       </div>
     </div>
 
@@ -440,11 +440,16 @@
     </div>
   </div>
 
+  <form class= "saveTTForm" action="/saveTimeTable" method="POST">
+    </form>
+      <button type="button" class = "saveTableButton" name="button">Save Timetable</button>
+
+
   <script type="text/javascript" src="scripts/jquery.js"></script>
   <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="scripts/loadTable.js"></script>
   <script type="text/javascript" src="scripts/timeTable.js"></script>
   <script type="text/javascript" src="scripts/clashHandler.js"></script>
-  <script type="text/javascript" src="scripts/loadTable.js"></script>
   <script type="text/javascript" src="scripts/javascript.js"></script>
 
   </script>
