@@ -114,6 +114,7 @@ button:hover {
   background: #8ce0ff;
   color: black;
   border-radius: 8px;
+  z-index: 10;
   transition: opacity 0.3s ease-out 0s;
   color: black;
 }
@@ -416,4 +417,82 @@ label input:checked~.customButton:after {
     margin: 20px;
     padding: 15px;
     cursor: pointer;
+}
+.text-label{
+  font-size: 17px;
+}
+.ffcsRedefined{
+  padding: 20px;
+  background: rgba(44, 84, 127,0.3);
+  font-size: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.ffcsRedefinedToggle{
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.ffcsRedefinedToggle:hover{
+  color: darkblue;
+}
+.addedCoursesCont{
+  background:#b2beff;
+  border: 2px solid #8497ff;
+}
+.ffcsRedefined .text-label{
+  font-size: 20px;
+  font-weight: bold;
+}
+.ffcsRedefined input{
+  padding:15px;
+}
+.ffcsRedefined img{
+  width: 40px;
+  height: 20px;
+  transition: transform 0.6s ease 0s;
+  opacity: 0.4;
+}
+.ffcsRedefined img:hover{
+  opacity: 0.8;
+}
+.ffcsRedefined ul{
+  padding: 7px;
+}
+.ffcsRedefined ul li{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  list-style-type: none;
+  padding:2px;
+  text-align: center;
+  background: #8497ff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s ease 0s;
+}
+.ffcsRedefined ul li:hover{
+  background-color:#ff6060;
+}
+.rotateImg{
+  transform: rotate(180deg);
+}
+.ffcsSubmitButton{
+  border:none;
+  background:#6875ff;
+  color:#e2e5ff;
+  font-weight: bold;
+  margin-top:30px;
+}
+hr {
+  border: 1;
+  margin-bottom: 20px;
+  background-color:grey;
+  height: 1px;
+}
+.text{
+  text-align: center;
+  font-weight: bold;
 }
